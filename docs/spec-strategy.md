@@ -15,6 +15,23 @@ Specs change as understanding deepens and implementation reveals reality. Update
 ### Separate Concerns, Link Liberally
 Split specs by concern (stack, backend, UI, features) but cross-reference heavily. When working on a feature, you should know exactly which shared specs are relevant.
 
+### Capture Decisions, Not Just Outcomes
+
+Don't just write down *what* was decided—write down *why*.
+
+Specs should capture:
+- **What you chose** - The decision itself
+- **What you considered** - Alternatives that were on the table
+- **Why you chose it** - The reasoning, tradeoffs, constraints that led to this choice
+
+Why this matters:
+- Conversations get lost (session ends, context compacts, memory fades)
+- Future you (or future contributors) will wonder "why did we do it this way?"
+- Knowing what was *rejected* prevents revisiting the same debates
+- The reasoning often matters more than the decision itself
+
+Don't let important decisions live only in conversation. Write them down promptly.
+
 ---
 
 ## Document Structure

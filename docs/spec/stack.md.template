@@ -88,6 +88,16 @@
 
 ---
 
+## Decisions
+
+{{Record key stack decisions and why. Future you will thank you.}}
+
+| Decision | Alternatives Considered | Why This Choice |
+|----------|------------------------|-----------------|
+| {{decision}} | {{what else was on the table}} | {{reasoning, tradeoffs, constraints}} |
+
+---
+
 ## Future Considerations
 
 {{Known areas that may need expansion later. Don't over-engineer now, but document what you're aware of.}}

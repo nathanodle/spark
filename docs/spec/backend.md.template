@@ -151,3 +151,13 @@ Shared backend patterns, project structure, and common services.
 - Connection lifecycle
 - Message formats
 - Heartbeat/keepalive
+
+---
+
+## Decisions
+
+{{Record key architectural decisions and why.}}
+
+| Decision | Alternatives Considered | Why This Choice |
+|----------|------------------------|-----------------|
+| {{decision}} | {{what else was on the table}} | {{reasoning, tradeoffs, constraints}} |
