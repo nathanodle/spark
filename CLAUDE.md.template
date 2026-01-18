@@ -141,6 +141,19 @@ When you do define structure, keep layers separate:
 
 See "Project Structure" in `docs/spec-strategy.md` for full guidance.
 
+### During Implementation
+
+**Refer back to specs frequently.** Don't trust your memory—re-read the relevant sections.
+
+- Before implementing a piece, re-read its spec section
+- Keep the spec open while coding; check that implementation matches
+- If you're making decisions not covered by the spec, stop and either:
+  - Check if it's actually in the spec (you may have forgotten)
+  - Discuss with the user and update the spec
+- After completing a piece, verify it matches what was specced
+
+Specs exist so decisions don't drift. Use them.
+
 ---
 
 ## Keep Docs in Sync
