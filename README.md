@@ -20,12 +20,37 @@ That's it. Claude takes it from there.
 
 ## How It Works
 
-The `CLAUDE.md` file bootstraps the process. When Claude reads it, Claude will:
+### The Bootstrap Process
 
-- Ask what you're building
-- Create project documentation through conversation
-- Fill out specs iteratively as decisions are made
-- Keep everything in sync as you build
+The repo ships with a minimal `CLAUDE.md` that exists only to bootstrap the process. When Claude reads it:
+
+1. **Claude learns the methodology** - The bootstrap file points Claude to `docs/spec-strategy.md`, which teaches the spec-driven approach and the "discussion first, implementation later" mindset
+
+2. **Claude asks what you're building** - Simple open-ended question to get started
+
+3. **You discuss the big picture** - What problem you're solving, who it's for, how it should work. Claude asks questions and explores the problem space with you.
+
+4. **Claude creates the real `CLAUDE.md`** - Using `CLAUDE.md.template`, Claude replaces the bootstrap file with a proper project guide containing your stack, architecture, constraints, etc.
+
+5. **Specs get filled out through conversation** - As decisions are made, Claude populates the spec templates in `docs/spec/`. Each spec cross-references related specs so context stays connected.
+
+6. **Implementation only when ready** - Claude won't suggest coding until specs meet readiness criteria: no open questions, dependencies defined, UX/UI clear, user has approved.
+
+### What's In The Box
+
+```
+CLAUDE.md                 # Bootstrap file (gets replaced)
+CLAUDE.md.template        # Template for real project guide
+docs/
+├── spec-strategy.md      # The methodology
+└── spec/
+    ├── index.md.template     # Spec overview
+    ├── stack.md.template     # Tech stack
+    ├── build-order.md.template
+    ├── backend.md.template
+    ├── ui.md.template
+    └── feature.md.template   # Copy per feature
+```
 
 ## The Methodology
 
