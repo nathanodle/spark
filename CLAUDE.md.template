@@ -124,6 +124,23 @@ Be mindful of build order. Before implementing X:
 
 "Well enough defined" = you know what it does, what goes in, what comes back. Enough to write code that uses it.
 
+### Project Structure
+
+Don't define folder structure or file organization too early. Structure is one of the **last things before implementation**.
+
+Wait until:
+- Big picture is clear
+- Stack is decided
+- Major features are identified
+- You understand how the pieces relate
+
+When you do define structure, keep layers separate:
+- **Data/Models** - Schemas, types. Independent of how data is served or displayed.
+- **Backend/API** - Business logic, endpoints. Knows about data, not UI.
+- **UI/Frontend** - Presentation, interaction. Calls the API, doesn't contain business logic.
+
+See "Project Structure" in `docs/spec-strategy.md` for full guidance.
+
 ---
 
 ## Keep Docs in Sync

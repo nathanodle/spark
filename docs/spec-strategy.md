@@ -290,6 +290,85 @@ Don't over-spec. These can emerge during implementation:
 
 ---
 
+## Project Structure
+
+### When to Define It
+
+Project structure (folder layout, file organization) is one of the **last things to define** before implementation begins. Don't jump to creating folders and files early.
+
+Why wait?
+
+- Structure follows from decisions, not the other way around
+- You need to know your stack before you can structure the project
+- You need to understand the major pieces before you know how to organize them
+- Premature structure locks you into patterns that may not fit
+
+**Define structure after:**
+- Big picture is clear (what you're building, who it's for)
+- Stack is decided (framework, database, frontend approach)
+- Major features/modules are identified
+- You understand how the pieces relate
+
+**Define structure before:**
+- Writing any implementation code
+- It's part of the "last mile" of spec work
+
+### Separation of Concerns
+
+Good project structure reflects clean boundaries between different kinds of code. The goal: each layer can change independently without rippling through everything else.
+
+**Core principle:** Code should be organized by *what it does*, not just *what feature it's part of*.
+
+#### Common Layers
+
+**Data / Models**
+- Database schemas, data structures, types
+- Should be independent—no knowledge of how data is served or displayed
+- Other layers import from here, this layer imports from nothing (or very little)
+
+**Backend / API**
+- Business logic, API endpoints, services
+- Knows about data layer, doesn't know about UI
+- Handles validation, authorization, orchestration
+
+**UI / Frontend**
+- Presentation, user interaction, display logic
+- Knows how to call the API, doesn't know how the API is implemented
+- Doesn't contain business logic—that belongs in the backend
+
+**Shared / Utilities**
+- Code used across layers (helpers, constants, types)
+- Should be minimal—if everything ends up here, your boundaries are unclear
+
+#### Why This Matters
+
+- **Testability** - Each layer can be tested in isolation
+- **Flexibility** - Swap out the UI without touching the backend, change the database without rewriting the API
+- **Clarity** - New contributors know where to find things and where to put new code
+- **Maintainability** - Changes stay localized instead of cascading everywhere
+
+#### Signs of Poor Separation
+
+- UI components making direct database calls
+- Business logic scattered across frontend components
+- Backend code that knows about UI-specific concerns (how things are displayed)
+- Circular dependencies between layers
+- "Utils" folder that contains half the codebase
+
+#### Practical Guidance
+
+1. **Start with the obvious layers** - Most apps have data, backend, and frontend. Start there.
+
+2. **Let features emerge within layers** - Within `backend/`, you might have `auth/`, `users/`, `billing/`. But those are subdivisions of the backend layer, not replacements for it.
+
+3. **Shared code should be minimal** - If you're constantly reaching for shared utilities, ask if your boundaries are in the right place.
+
+4. **Monorepo vs. separate repos** - For most projects, a monorepo with clear folder boundaries is simpler than multiple repos. Separate repos add coordination overhead.
+
+5. **Match the framework's conventions** - If your framework has opinions about structure, follow them unless you have a strong reason not to. Fighting the framework creates friction.
+
+---
+
 ## Anti-Patterns
 
 ### Don't Do This
