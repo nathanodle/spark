@@ -63,13 +63,55 @@ Don't let important decisions live only in conversation. Write them down promptl
 ### Recommended Files
 
 ```
-docs/spec/
-├── index.md          # Entry point - links to everything, shows status
-├── stack.md          # Tech choices, infrastructure, data flow
-├── backend.md        # Project structure, services, schema, API conventions
-├── ui.md             # Shared UI patterns, design system
-└── [feature].md      # One per feature (e.g., chatbot.md, billing.md)
+docs/
+├── spec-strategy.md              # This file - methodology
+├── spec/                         # Platform-level shared specs
+│   ├── index.md                  # Entry point - links to shared specs + subsystems
+│   ├── stack.md                  # Tech choices, infrastructure, data flow
+│   ├── backend.md                # Project structure, services, schema, API conventions
+│   ├── ui.md                     # Shared UI patterns, design system
+│   ├── templates/                # Templates for bootstrapping new subsystems
+│   │   ├── index.md.template
+│   │   ├── stack.md.template
+│   │   ├── feature.md.template
+│   │   └── ...
+│   └── archive/                  # Historical specs (completed build orders, etc.)
+│
+├── <subsystem>/                  # One per major subsystem/vertical
+│   └── spec/
+│       ├── index.md              # Subsystem overview + Related Platform Specs table
+│       ├── build-order.md        # Subsystem-specific build order
+│       └── [feature].md          # Feature specs for this subsystem
+│
+└── <another-subsystem>/
+    └── spec/
+        └── ...
 ```
+
+### Subsystems
+
+For multi-vertical or multi-module projects, specs split into **platform** and **subsystem** layers:
+
+- **Platform specs** (`docs/spec/`) cover shared infrastructure: auth, security, stack, backend architecture, UI design system. These apply across all subsystems.
+- **Subsystem specs** (`docs/<subsystem>/spec/`) cover features specific to one vertical or module. Each subsystem has its own index, build order, and feature specs.
+
+Every subsystem index starts with a **Related Platform Specs** table pointing back to the shared specs it depends on.
+
+**When to create a new subsystem directory:**
+- It has its own features, data sources, or domain logic
+- It will have multiple spec documents
+- It could conceptually be developed somewhat independently
+
+**When NOT to create a subsystem directory:**
+- It's just one feature of an existing subsystem (add a feature spec there instead)
+- It's platform infrastructure (belongs in `docs/spec/`)
+
+**Bootstrapping a new subsystem:**
+1. Create `docs/<subsystem>/spec/`
+2. Copy `docs/spec/templates/index.md.template` → fill in subsystem overview
+3. Copy `docs/spec/templates/feature.md.template` for each feature
+4. Add the subsystem to the platform `docs/spec/index.md` subsystems table
+5. Fill in specs through discussion, same as any other spec work
 
 ### Index Structure
 
@@ -206,6 +248,25 @@ Each feature spec should cover:
 4. **Feature-specific UI** - Screens, interactions unique to this feature
 5. **Feature-specific backend** - Endpoints, logic unique to this feature
 6. **Error handling** - Feature-specific error cases
+7. **Decisions table** - Key choices made (see below)
+8. **Open questions** - Unresolved items (checklist format)
+
+---
+
+## Decisions Tables
+
+Any spec (shared or feature) that involves meaningful choices should include a Decisions table:
+
+```markdown
+## Decisions
+
+| Decision | Alternatives Considered | Why This Choice |
+|----------|------------------------|-----------------|
+| Use Anthropic for chat agent | OpenAI, local vLLM | Best tool-use support, streaming quality |
+| CF Access for auth | Auth0, Supabase Auth | Already in infrastructure, zero-trust model |
+```
+
+This implements the "capture decisions, not just outcomes" principle. Record what you chose, what else was on the table, and why. Prevents revisiting the same debates later.
 
 ---
 
@@ -408,31 +469,31 @@ Good project structure reflects clean boundaries between different kinds of code
 
 ## Template Files
 
-When starting a new project, copy these templates and replace `{{PLACEHOLDER}}` values:
+Templates live in `docs/spec/templates/`. Copy them and replace `{{PLACEHOLDER}}` values.
 
 | Template | Purpose |
 |----------|---------|
-| `CLAUDE.md.template` | AI assistant project guide - copy to `CLAUDE.md` |
-| `docs/spec/index.md.template` | Spec overview and entry point |
-| `docs/spec/stack.md.template` | Tech stack documentation |
-| `docs/spec/build-order.md.template` | Implementation order |
-| `docs/spec/backend.md.template` | Backend architecture (if applicable) |
-| `docs/spec/ui.md.template` | UI patterns (if applicable) |
-| `docs/spec/feature.md.template` | Feature spec - copy once per major feature |
+| `index.md.template` | Spec overview and entry point (platform or subsystem) |
+| `stack.md.template` | Tech stack documentation |
+| `build-order.md.template` | Implementation order |
+| `backend.md.template` | Backend architecture (if applicable) |
+| `ui.md.template` | UI patterns (if applicable) |
+| `feature.md.template` | Feature spec - copy once per major feature |
 
-### Quick Start
+### Bootstrapping a New Subsystem
 
 ```bash
-# Copy templates to start a new project
-cp CLAUDE.md.template CLAUDE.md
-cp docs/spec/index.md.template docs/spec/index.md
-cp docs/spec/stack.md.template docs/spec/stack.md
-cp docs/spec/build-order.md.template docs/spec/build-order.md
+# Create subsystem spec directory
+mkdir -p docs/my-subsystem/spec
 
-# Copy shared specs if applicable
-cp docs/spec/backend.md.template docs/spec/backend.md
-cp docs/spec/ui.md.template docs/spec/ui.md
+# Copy and fill in templates
+cp docs/spec/templates/index.md.template docs/my-subsystem/spec/index.md
+cp docs/spec/templates/build-order.md.template docs/my-subsystem/spec/build-order.md
+cp docs/spec/templates/feature.md.template docs/my-subsystem/spec/my-feature.md
 
-# Copy feature template for each major feature
-cp docs/spec/feature.md.template docs/spec/my-feature.md
+# If subsystem has its own stack additions (e.g., different LLM endpoint)
+cp docs/spec/templates/stack.md.template docs/my-subsystem/spec/stack.md
+
+# Add to platform index
+# Edit docs/spec/index.md → Subsystems table
 ```

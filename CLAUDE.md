@@ -21,4 +21,4 @@ This is a fresh project template that uses a detailed specification process you 
 4. Fill out specs in `docs/spec/` iteratively through conversation
 5. Only suggest implementation when specs meet the readiness criteria
 
-Templates are in `docs/spec/*.template` - copy and fill as needed.
+Templates are in `docs/spec/templates/` - copy and fill as needed.

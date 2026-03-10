@@ -6,12 +6,14 @@
 
 ---
 
-## Spec Components
+## Platform Specs
+
+Shared infrastructure that applies across all subsystems.
 
 ### Planning
 | Document | Status | Description |
 |----------|--------|-------------|
-| [Build Order](build-order.md) | 🔲 Pending | Implementation order and dependencies |
+| [Spec Strategy](../spec-strategy.md) | Complete | Methodology for specs, subsystem pattern, templates |
 
 ### Shared Specs
 | Document | Status | Description |
@@ -20,11 +22,22 @@
 | [Backend](backend.md) | 🔲 Pending | Shared backend architecture, services, schema |
 | [UI](ui.md) | 🔲 Pending | Shared UI patterns, layout, design system |
 
-### Feature Specs
-| Document | Status | Description |
-|----------|--------|-------------|
-| [Feature A](feature-a.md) | 🔲 Pending | {{Description}} |
-| [Feature B](feature-b.md) | 🔲 Pending | {{Description}} |
+### Templates
+Spec templates for bootstrapping new subsystems live in [`templates/`](templates/).
+
+### Archive
+Historical implementation plans and completed build orders live in [`archive/`](archive/).
+
+---
+
+## Subsystems
+
+Each subsystem has its own spec directory under `docs/<subsystem>/spec/`.
+
+| Subsystem | Status | Description |
+|-----------|--------|-------------|
+| [{{Subsystem A}}](../{{subsystem-a}}/spec/index.md) | 🔲 Pending | {{Description}} |
+| [{{Subsystem B}}](../{{subsystem-b}}/spec/index.md) | 🔲 Pending | {{Description}} |
 
 ---
 

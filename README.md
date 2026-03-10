@@ -32,7 +32,7 @@ The repo ships with a minimal `CLAUDE.md` that exists only to bootstrap the proc
 
 4. **Claude creates the real `CLAUDE.md`** - Using `CLAUDE.md.template`, Claude replaces the bootstrap file with a proper project guide containing your stack, architecture, constraints, etc.
 
-5. **Specs get filled out through conversation** - As decisions are made, Claude populates the spec templates in `docs/spec/`. Each spec cross-references related specs so context stays connected.
+5. **Specs get filled out through conversation** - As decisions are made, Claude populates specs from the templates in `docs/spec/templates/`. Platform specs go in `docs/spec/`, subsystem specs go in `docs/<subsystem>/spec/`. Each spec cross-references related specs so context stays connected.
 
 6. **Implementation only when ready** - Claude won't suggest coding until specs meet readiness criteria: no open questions, dependencies defined, UX/UI clear, user has approved.
 
@@ -44,12 +44,13 @@ CLAUDE.md.template        # Template for real project guide
 docs/
 ├── spec-strategy.md      # The methodology
 └── spec/
-    ├── index.md.template     # Spec overview
-    ├── stack.md.template     # Tech stack
-    ├── build-order.md.template
-    ├── backend.md.template
-    ├── ui.md.template
-    └── feature.md.template   # Copy per feature
+    └── templates/            # Templates for bootstrapping specs
+        ├── index.md.template     # Spec overview (platform or subsystem)
+        ├── stack.md.template     # Tech stack
+        ├── build-order.md.template
+        ├── backend.md.template
+        ├── ui.md.template
+        └── feature.md.template   # Copy per feature
 ```
 
 ## The Methodology
@@ -61,3 +62,5 @@ See `docs/spec-strategy.md` for the full approach. Key principles:
 - **Separate concerns** - Stack, backend, UI, and features in separate docs
 - **Cross-reference** - Feature specs link to relevant shared specs
 - **Build order** - Know what to build first and why
+- **Platform + subsystems** - Shared specs at the platform level, feature specs organized per subsystem/vertical
+- **Capture decisions** - Record what you chose, what you considered, and why

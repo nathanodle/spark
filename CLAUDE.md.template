@@ -8,22 +8,32 @@
 
 ## Spec Organization
 
-Specs live in `docs/spec/`. They are split into **shared specs** (apply across features) and **feature specs** (specific to one feature). See `docs/spec-strategy.md` for the methodology.
+Specs are organized into **platform specs** (shared across subsystems) and **subsystem specs** (specific to one vertical/module). See `docs/spec-strategy.md` for the methodology.
 
 ```
-docs/spec/
-├── index.md          # Start here - overview and links to all specs
-├── build-order.md    # Implementation order and dependencies
-├── stack.md          # Tech stack, infrastructure, data flow
-├── backend.md        # Shared backend: project structure, services, schema
-├── ui.md             # Shared UI: layout, design system, components
-└── [feature].md      # One file per major feature
+docs/
+├── spec-strategy.md              # Methodology for all specs
+├── spec/                         # Platform-level shared specs
+│   ├── index.md                  # Start here - overview + links to subsystems
+│   ├── stack.md                  # Shared tech stack
+│   ├── backend.md                # Shared backend architecture
+│   ├── ui.md                     # Shared design system
+│   ├── templates/                # Templates for bootstrapping new subsystems
+│   └── archive/                  # Historical specs kept for reference
+│
+├── {{subsystem}}/spec/           # Subsystem specs
+│   ├── index.md                  # Subsystem overview + related platform specs
+│   ├── build-order.md            # Subsystem-specific build order
+│   └── [feature].md              # Feature specs
+│
+└── {{another-subsystem}}/spec/
+    └── ...
 ```
 
 **When working on a feature:**
-1. Read the feature spec (e.g., `feature-name.md`)
-2. Check the "Related Specs" table at the top - it points to shared specs with notes on what's relevant
-3. Consult shared specs (`stack.md`, `backend.md`, `ui.md`) for infrastructure, patterns, and conventions
+1. Read the subsystem's feature spec (e.g., `docs/{{subsystem}}/spec/feature-name.md`)
+2. Check the "Related Specs" table at the top - it points to shared platform specs
+3. Consult platform specs (`stack.md`, `backend.md`, `ui.md`) for infrastructure, patterns, and conventions
 
 **Spec status:**
 - ✅ Complete - Spec is written and approved
@@ -38,6 +48,7 @@ docs/spec/
 | `docs/spec/index.md` | Spec overview - start here for specs |
 | `docs/spec/stack.md` | Complete tech stack reference |
 | `docs/spec-strategy.md` | Reusable spec strategy (methodology reference) |
+| `docs/{{subsystem}}/spec/index.md` | {{Subsystem}} overview |
 
 {{Add other key docs as they emerge - API references, data analysis, etc.}}
 
@@ -97,15 +108,18 @@ See `docs/spec/stack.md` for full details.
 
 ## Working with This Project
 
-**Default mode is discussion, not implementation.** Spec first, code second.
+**Do NOT write implementation code until the relevant spec is complete and approved.** Discussion and spec work come first. This is not a suggestion — it is how this project works.
+
+If the user asks you to build something and the spec isn't ready, say so. Help them finish the spec. Don't skip ahead.
 
 1. **Before coding:** Check spec status in `docs/spec/index.md`
 2. **For stack decisions:** See `docs/spec/stack.md`
-3. **For implementation order:** See `docs/spec/build-order.md`
+3. **For implementation order:** See the relevant `build-order.md`
+4. **For full methodology:** Read `docs/spec-strategy.md`
 
-### Before Suggesting Implementation
+### Implementation Gate
 
-Don't suggest implementing a feature or section until:
+**Do not suggest or begin implementation** of a feature or section unless ALL of these are true:
 
 1. **No unresolved TODOs** in that section
 2. **No open questions** - they've been discussed and answered
@@ -114,6 +128,8 @@ Don't suggest implementing a feature or section until:
 5. **Dependencies ready** - what this depends on is implemented or well enough defined to use
 6. **UX/UI defined** (if user-facing) - flows, layouts, interactions, error states
 7. **Big picture understood** - how it fits into the whole, no conflicts with other specs
+
+If any of these are not met, **stop and address them first**. Don't approximate, don't wing it, don't write code "to figure it out."
 
 ### Dependency Awareness
 
