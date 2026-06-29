@@ -1,0 +1,196 @@
+# {{PROJECT_NAME}} - Project Guide for an LLM Agent
+
+## What is {{PROJECT_NAME}}?
+
+{{One paragraph description of the project. What problem does it solve? Who is it for?}}
+
+---
+
+## Spec Organization
+
+Specs are organized into **platform specs** (shared across subsystems) and **subsystem specs** (specific to one vertical/module). See `docs/spec-strategy.md` for the methodology.
+
+```
+docs/
+├── spec-strategy.md              # Methodology for all specs
+├── spec/                         # Platform-level shared specs
+│   ├── index.md                  # Start here - overview + links to subsystems
+│   ├── stack.md                  # Shared tech stack
+│   ├── backend.md                # Shared backend architecture
+│   ├── ui.md                     # Shared design system
+│   ├── templates/                # Templates for bootstrapping new subsystems
+│   └── archive/                  # Historical specs kept for reference
+│
+├── {{subsystem}}/spec/           # Subsystem specs
+│   ├── index.md                  # Subsystem overview + related platform specs
+│   ├── build-order.md            # Subsystem-specific build order
+│   └── [feature].md              # Feature specs
+│
+└── {{another-subsystem}}/spec/
+    └── ...
+```
+
+**When working on a feature:**
+1. Read the subsystem's feature spec (e.g., `docs/{{subsystem}}/spec/feature-name.md`)
+2. Check the "Related Specs" table at the top - it points to shared platform specs
+3. Consult platform specs (`stack.md`, `backend.md`, `ui.md`) for infrastructure, patterns, and conventions
+
+**Spec status:**
+- ✅ Complete - Spec is written and approved
+- 🔲 Pending - Placeholder with structure, needs content
+
+---
+
+## Key Documentation
+
+| File | Purpose |
+|------|---------|
+| `docs/spec/index.md` | Spec overview - start here for specs |
+| `docs/spec/stack.md` | Complete tech stack reference |
+| `docs/spec-strategy.md` | Reusable spec strategy (methodology reference) |
+| `docs/{{subsystem}}/spec/index.md` | {{Subsystem}} overview |
+
+{{Add other key docs as they emerge - API references, data analysis, etc.}}
+
+---
+
+## Tech Stack Summary
+
+| Layer | Technology |
+|-------|------------|
+| Backend | {{framework, ORM, database}} |
+| Frontend | {{framework, styling, components}} |
+| Infrastructure | {{deployment, networking}} |
+
+See `docs/spec/stack.md` for full details.
+
+---
+
+## Architecture
+
+{{Brief architecture description - monolith vs microservices, key components, etc.}}
+
+```
+{{ASCII diagram of high-level architecture}}
+```
+
+---
+
+## Environment
+
+{{Environment setup notes - .env variables, virtual environments, etc.}}
+
+---
+
+## External Services
+
+{{List any external APIs or services the project integrates with}}
+
+- **{{Service Name}}** - {{Brief description, auth method, link to docs}}
+
+---
+
+## Important Constraints
+
+{{List key constraints that affect implementation decisions:}}
+{{- Deployment constraints (no Docker, no cloud, etc.)}}
+{{- External API limitations (read-only, rate limits, etc.)}}
+{{- Security requirements}}
+{{- Performance requirements}}
+
+---
+
+## Current State
+
+{{What's done, what's in progress, what's planned}}
+
+---
+
+## Working with This Project
+
+**Do NOT write implementation code until the relevant spec is complete and approved.** Discussion and spec work come first. This is not a suggestion — it is how this project works.
+
+If the user asks you to build something and the spec isn't ready, say so. Help them finish the spec. Don't skip ahead.
+
+1. **Before coding:** Check spec status in `docs/spec/index.md`
+2. **For stack decisions:** See `docs/spec/stack.md`
+3. **For implementation order:** See the relevant `build-order.md`
+4. **For full methodology:** Read `docs/spec-strategy.md`
+
+### Implementation Gate
+
+**Do not suggest or begin implementation** of a feature or section unless ALL of these are true:
+
+1. **No unresolved TODOs** in that section
+2. **No open questions** - they've been discussed and answered
+3. **User has approved** - they've reviewed and agreed, not just you writing it
+4. **Status is ✅ Complete** - explicitly marked, not 🔲 Pending
+5. **Dependencies ready** - what this depends on is implemented or well enough defined to use
+6. **UX/UI defined** (if user-facing) - flows, layouts, interactions, error states
+7. **Big picture understood** - how it fits into the whole, no conflicts with other specs
+
+If any of these are not met, **stop and address them first**. Don't approximate, don't wing it, don't write code "to figure it out."
+
+### Dependency Awareness
+
+Be mindful of build order. Before implementing X:
+- Are its dependencies specced and ready?
+- Are they implemented, or defined well enough to code against?
+- Do you understand how X connects to other pieces?
+
+"Well enough defined" = you know what it does, what goes in, what comes back. Enough to write code that uses it.
+
+### Project Structure
+
+Don't define folder structure or file organization too early. Structure is one of the **last things before implementation**.
+
+Wait until:
+- Big picture is clear
+- Stack is decided
+- Major features are identified
+- You understand how the pieces relate
+
+When you do define structure, keep layers separate:
+- **Data/Models** - Schemas, types. Independent of how data is served or displayed.
+- **Backend/API** - Business logic, endpoints. Knows about data, not UI.
+- **UI/Frontend** - Presentation, interaction. Calls the API, doesn't contain business logic.
+
+See "Project Structure" in `docs/spec-strategy.md` for full guidance.
+
+### During Implementation
+
+**Refer back to specs frequently.** Don't trust your memory—re-read the relevant sections.
+
+- Before implementing a piece, re-read its spec section
+- Keep the spec open while coding; check that implementation matches
+- If you're making decisions not covered by the spec, stop and either:
+  - Check if it's actually in the spec (you may have forgotten)
+  - Discuss with the user and update the spec
+- After completing a piece, verify it matches what was specced
+
+Specs exist so decisions don't drift. Use them.
+
+---
+
+## Keep Docs in Sync
+
+**IMPORTANT:** Always update documentation as you work.
+
+- When you implement something, update the relevant spec to reflect reality
+- When you make architecture decisions, document them
+- When you change something that affects other docs, update those too
+- Mark spec sections as ✅ Complete when implemented and verified
+
+The user may start new sessions and relies on docs being accurate. Stale docs cause confusion and wasted time.
+
+---
+
+## Spec Strategy Summary
+
+This project follows the spec strategy in `docs/spec-strategy.md`. Key principles:
+
+1. **Discuss before writing** - Specs emerge from conversation
+2. **Living documents** - Update specs as you build
+3. **Separate concerns** - Stack, backend, UI, features in separate docs
+4. **Cross-reference** - Feature specs link to relevant shared specs
+5. **Build order** - Know what to build first and why

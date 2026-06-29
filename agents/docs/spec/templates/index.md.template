@@ -1,0 +1,72 @@
+# {{PROJECT_NAME}} Specification
+
+**{{PROJECT_NAME}}** - {{Short tagline or description}}
+
+{{One paragraph explaining what this project is and what problem it solves.}}
+
+---
+
+## Platform Specs
+
+Shared infrastructure that applies across all subsystems.
+
+### Planning
+| Document | Status | Description |
+|----------|--------|-------------|
+| [Spec Strategy](../spec-strategy.md) | Complete | Methodology for specs, subsystem pattern, templates |
+
+### Shared Specs
+| Document | Status | Description |
+|----------|--------|-------------|
+| [Stack](stack.md) | 🔲 Pending | Tech stack, infrastructure, data flow |
+| [Backend](backend.md) | 🔲 Pending | Shared backend architecture, services, schema |
+| [UI](ui.md) | 🔲 Pending | Shared UI patterns, layout, design system |
+
+### Templates
+Spec templates for bootstrapping new subsystems live in [`templates/`](templates/).
+
+### Archive
+Historical implementation plans and completed build orders live in [`archive/`](archive/).
+
+---
+
+## Subsystems
+
+Each subsystem has its own spec directory under `docs/<subsystem>/spec/`.
+
+| Subsystem | Status | Description |
+|-----------|--------|-------------|
+| [{{Subsystem A}}](../{{subsystem-a}}/spec/index.md) | 🔲 Pending | {{Description}} |
+| [{{Subsystem B}}](../{{subsystem-b}}/spec/index.md) | 🔲 Pending | {{Description}} |
+
+---
+
+## Project Scope
+
+### Phase 1: {{Name}}
+- {{Key deliverable}}
+- {{Key deliverable}}
+
+### Phase 2: {{Name}}
+- {{Key deliverable}}
+
+### Future
+- {{Ideas for later}}
+
+---
+
+## Target Users
+
+{{Who will use this? Internal users, customers, developers, etc.}}
+
+---
+
+## Key Insights
+
+{{Optional: If you've done research/analysis that informs the design, summarize findings here.}}
+
+---
+
+## External References
+
+{{Links to API docs, research, related projects, etc.}}

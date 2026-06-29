@@ -1,0 +1,103 @@
+# {{PROJECT_NAME}} Tech Stack
+
+## Overview
+
+{{Brief description of the deployment model and key constraints (local server, cloud, containers, etc.)}}
+
+---
+
+## Stack Summary
+
+| Layer | Technology | Notes |
+|-------|------------|-------|
+| **Backend** | {{framework}} | {{why this choice}} |
+| **Database** | {{database}} | {{why this choice}} |
+| **Frontend** | {{framework}} | {{why this choice}} |
+| **Styling** | {{css approach}} | {{why this choice}} |
+| **Auth** | {{auth strategy}} | {{why this choice}} |
+| **Testing** | {{test framework}} | {{why this choice}} |
+
+{{Add/remove rows as needed for your stack: ORM, caching, queues, ML, etc.}}
+
+---
+
+## Backend Details
+
+### {{Framework Name}}
+{{Why this framework? Key features being used.}}
+
+### Database
+{{Database choice, what it stores, any special features (JSONB, full-text search, etc.)}}
+
+### {{Other Backend Components}}
+{{Add sections for ORM, caching, task queues, etc. as applicable}}
+
+---
+
+## Frontend Details
+
+{{Skip this section if no frontend}}
+
+### {{Framework Name}}
+{{Why this framework? Key patterns.}}
+
+### Styling
+{{CSS approach, component library, design system}}
+
+### State Management
+{{How state is managed}}
+
+---
+
+## Infrastructure
+
+### Development
+```
+{{Local dev setup - ports, services}}
+```
+
+### Production
+```
+{{Production architecture - how requests flow}}
+```
+
+{{Deployment strategy, process management, monitoring}}
+
+---
+
+## External Services
+
+### {{Service Name}}
+{{What it is, how it's used, auth method, any limitations}}
+
+---
+
+## Data Flow
+
+```
+{{ASCII diagram showing how data moves through the system}}
+```
+
+---
+
+## Development Tools
+
+| Tool | Purpose |
+|------|---------|
+| {{tool}} | {{purpose}} |
+
+---
+
+## Decisions
+
+{{Record key stack decisions and why. Future you will thank you.}}
+
+| Decision | Alternatives Considered | Why This Choice |
+|----------|------------------------|-----------------|
+| {{decision}} | {{what else was on the table}} | {{reasoning, tradeoffs, constraints}} |
+
+---
+
+## Future Considerations
+
+{{Known areas that may need expansion later. Don't over-engineer now, but document what you're aware of.}}

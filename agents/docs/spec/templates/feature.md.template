@@ -1,0 +1,140 @@
+# {{PROJECT_NAME}} {{Feature Name}} Specification
+
+{{One-line description of what this feature does.}}
+
+**Status:** 🔲 Pending
+**Priority:** {{1, 2, 3, or Future}}
+
+---
+
+## Related Specs
+
+| Spec | Relevance |
+|------|-----------|
+| [Stack](stack.md) | {{What stack components this feature uses}} |
+| [Backend](backend.md) | {{What backend services/patterns apply}} |
+| [UI](ui.md) | {{What UI patterns/components apply}} |
+
+---
+
+## Overview
+
+{{2-3 paragraphs describing the feature from a user's perspective. What can they do? What problem does it solve?}}
+
+Example user stories or scenarios:
+- "As a {{user type}}, I want to {{action}} so that {{benefit}}"
+- {{More examples}}
+
+---
+
+## Requirements
+
+### Must Have
+- {{Core requirement}}
+- {{Core requirement}}
+
+### Should Have
+- {{Important but not critical}}
+
+### Nice to Have
+- {{Can defer}}
+
+---
+
+## User Interface
+
+*TODO: Define feature-specific UI*
+
+### Screens/Views
+
+1. **{{Screen Name}}**
+   - Purpose: {{what user does here}}
+   - Key elements: {{what's on the screen}}
+
+2. **{{Screen Name}}**
+   - Purpose: {{what user does here}}
+   - Key elements: {{what's on the screen}}
+
+### User Flows
+
+```
+{{Flow diagram or description}}
+User lands on X → clicks Y → sees Z → ...
+```
+
+### Wireframes
+
+{{Link to wireframes or describe key layouts}}
+
+---
+
+## Backend
+
+*TODO: Define feature-specific backend*
+
+### Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/{{resource}}` | {{what it returns}} |
+| POST | `/api/{{resource}}` | {{what it creates}} |
+
+### Data Model
+
+{{Feature-specific tables or fields}}
+
+### Business Logic
+
+{{Key algorithms, rules, or workflows}}
+
+---
+
+## Integration Points
+
+{{How this feature interacts with other features or external systems}}
+
+---
+
+## Error Handling
+
+| Error Case | User Experience | Technical Handling |
+|------------|-----------------|-------------------|
+| {{case}} | {{what user sees}} | {{how code handles it}} |
+
+---
+
+## Security Considerations
+
+{{Auth requirements, data sensitivity, input validation, etc.}}
+
+---
+
+## Testing Strategy
+
+### Unit Tests
+- {{What to test}}
+
+### Integration Tests
+- {{What to test}}
+
+### Manual Testing
+- {{Key scenarios to verify}}
+
+---
+
+## Decisions
+
+{{Record key decisions and their rationale. Don't let important choices live only in conversation.}}
+
+| Decision | Alternatives Considered | Why This Choice |
+|----------|------------------------|-----------------|
+| {{decision}} | {{what else was on the table}} | {{reasoning, tradeoffs, constraints}} |
+
+---
+
+## Open Questions
+
+{{Things still to be decided - remove when resolved}}
+
+- [ ] {{Question 1}}
+- [ ] {{Question 2}}

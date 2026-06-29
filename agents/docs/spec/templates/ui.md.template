@@ -1,0 +1,143 @@
+# {{PROJECT_NAME}} UI Specification
+
+Shared UI patterns, layout, design system, and components.
+
+**Status:** 🔲 Pending
+
+---
+
+## Overview
+
+{{Brief description of the UI - web app, mobile, desktop, CLI, etc.}}
+
+{{List main feature areas/screens}}
+
+---
+
+## Layout
+
+*TODO: Define overall layout structure*
+
+```
+┌─────────────────────────────────────────┐
+│  Header                                 │
+├──────────┬──────────────────────────────┤
+│          │                              │
+│  Sidebar │  Main Content                │
+│          │                              │
+│          │                              │
+└──────────┴──────────────────────────────┘
+```
+
+{{Adjust for your layout pattern}}
+
+- Header contents
+- Sidebar/navigation
+- Main content area
+- Mobile behavior
+
+---
+
+## Design System
+
+### Colors
+
+| Name | Value | Usage |
+|------|-------|-------|
+| Primary | {{color}} | {{usage}} |
+| Secondary | {{color}} | {{usage}} |
+| Background | {{color}} | {{usage}} |
+| Text | {{color}} | {{usage}} |
+| Error | {{color}} | {{usage}} |
+
+### Typography
+
+| Element | Font | Size | Weight |
+|---------|------|------|--------|
+| Heading 1 | {{font}} | {{size}} | {{weight}} |
+| Body | {{font}} | {{size}} | {{weight}} |
+
+### Spacing
+
+{{Spacing scale - 4px base, etc.}}
+
+---
+
+## Shared Components
+
+{{Component library being used, plus custom components}}
+
+### Core Components
+
+- Buttons
+- Forms / Inputs
+- Modals / Dialogs
+- Tables
+- Cards
+- Loading states
+- Error states
+
+### Custom Components
+
+{{Project-specific shared components}}
+
+---
+
+## Navigation
+
+*TODO: Define navigation structure*
+
+- Primary navigation (how users move between features)
+- Secondary navigation (within features)
+- Breadcrumbs (if applicable)
+- Mobile navigation pattern
+
+---
+
+## Responsive Design
+
+### Breakpoints
+
+| Name | Min Width | Behavior |
+|------|-----------|----------|
+| Mobile | 0 | {{behavior}} |
+| Tablet | {{width}} | {{behavior}} |
+| Desktop | {{width}} | {{behavior}} |
+
+### Mobile Considerations
+
+- Touch targets (min 44px)
+- Swipe gestures (if any)
+- Offline behavior (if any)
+
+---
+
+## Accessibility
+
+### Requirements
+
+- Keyboard navigation for all interactive elements
+- Screen reader support (ARIA labels)
+- Color contrast (WCAG AA minimum)
+- Focus states visible
+- Form error announcements
+
+### Testing
+
+{{How accessibility will be tested}}
+
+---
+
+## State Patterns
+
+### Loading States
+
+{{How loading is indicated - skeletons, spinners, etc.}}
+
+### Empty States
+
+{{What to show when there's no data}}
+
+### Error States
+
+{{How errors are displayed}}
